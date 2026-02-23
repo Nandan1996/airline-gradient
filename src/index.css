@@ -1,0 +1,414 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #0f1117;
+  --surface: #1a1d27;
+  --border: #2a2d3a;
+  --text: #e4e4e7;
+  --text-dim: #8b8d97;
+  --accent: #6366f1;
+  --danger: #ef4444;
+  --radius: 8px;
+}
+
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+header h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 24px;
+  color: var(--text);
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+@media (max-width: 860px) {
+  main {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Panel */
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.panel h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: var(--text);
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.panel-header h2 {
+  margin-bottom: 0;
+}
+
+.panel-header-actions {
+  display: flex;
+  gap: 6px;
+}
+
+/* Buttons */
+button {
+  padding: 6px 14px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: background 0.15s;
+  white-space: nowrap;
+}
+
+button:hover {
+  background: var(--border);
+}
+
+button.danger {
+  color: var(--danger);
+  border-color: var(--danger);
+}
+
+button.danger:hover {
+  background: var(--danger);
+  color: white;
+}
+
+button.danger.sm {
+  padding: 2px 8px;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.add-btn {
+  width: 100%;
+  padding: 10px;
+  margin-top: 12px;
+  border-style: dashed;
+  color: var(--text-dim);
+}
+
+/* Inputs */
+input[type="text"],
+input[type="number"],
+select {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 0.85rem;
+  outline: none;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus {
+  border-color: var(--accent);
+}
+
+input[type="color"] {
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 2px;
+  cursor: pointer;
+  background: var(--bg);
+  flex-shrink: 0;
+}
+
+/* ========= Airline list ========= */
+.airline-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.airline-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  gap: 12px;
+}
+
+.airline-row.editing {
+  display: block;
+  padding: 16px;
+}
+
+.airline-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.airline-info strong {
+  font-family: monospace;
+  font-size: 0.9rem;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.token-swatches {
+  display: flex;
+  gap: 4px;
+}
+
+.swatch {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.airline-actions {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+/* ========= Airline form (edit/add) ========= */
+.airline-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.airline-form-row {
+  display: flex;
+  gap: 10px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.75rem;
+  color: var(--text-dim);
+}
+
+.form-field input {
+  width: 100%;
+}
+
+.form-field-grow {
+  flex: 1;
+}
+
+.id-input {
+  width: 64px !important;
+  font-family: monospace;
+  text-transform: uppercase;
+}
+
+.airline-form-tokens {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+/* Token input */
+.token-input {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.75rem;
+  color: var(--text-dim);
+}
+
+.color-pair {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.hex-input {
+  width: 100%;
+  min-width: 0;
+  font-family: monospace;
+  font-size: 0.8rem;
+}
+
+/* ========= Stops ========= */
+.stops-group {
+  margin-bottom: 20px;
+}
+
+.stops-group:last-child {
+  margin-bottom: 0;
+}
+
+.stops-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.stops-header h3 {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-dim);
+}
+
+.stops-table {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.stop-row {
+  display: flex;
+  align-items: end;
+  gap: 12px;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+}
+
+.stop-field {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-size: 0.72rem;
+  color: var(--text-dim);
+}
+
+.stop-field select {
+  font-size: 0.8rem;
+  min-width: 80px;
+}
+
+.stop-value {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.stop-value input[type="range"] {
+  width: 110px;
+  accent-color: var(--accent);
+}
+
+.stop-num {
+  width: 58px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ========= Preview ========= */
+.preview-panel {
+  position: sticky;
+  top: 24px;
+}
+
+.selector-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.selector-row label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  flex: 1;
+}
+
+.selector-row select {
+  width: 100%;
+}
+
+.gradient-bar {
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  margin-bottom: 12px;
+}
+
+.gradient-bar.vertical {
+  height: 300px;
+}
+
+.token-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  color: var(--text-dim);
+}
+
+.legend-item .swatch {
+  width: 16px;
+  height: 16px;
+}
+
+.css-output {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 10px 14px;
+}
+
+.css-output code {
+  font-size: 0.78rem;
+  color: var(--accent);
+  word-break: break-all;
+}
+
+.hint {
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  text-align: center;
+  padding: 24px;
+}
